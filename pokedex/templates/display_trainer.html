@@ -7,7 +7,7 @@
     <body>
         <div class="container">
             <div class="bg-primary text-white p-4 text-center">
-                <h1>Mi Pokedex</h1>
+                <h1>Mis Entrenadores</h1>
             </div>
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
                 <div class="container-fluid">
@@ -27,13 +27,12 @@
                   </div>
                 </div>
               </nav>
-            <p>Has elegido el pokemon: <strong>{{ pokemon | capfirst }}</strong></p>
-            <h3>Información del Pokémon</h3>
+            <p>Has elegido el entrenador: <strong>{{ trainer | capfirst }}</strong></p>
+            <h3>Información del entrenador</h3>
             <ul>
-                <li>Nombre: {{ pokemon.name }}</li>
-                <li>Tipo: {{ pokemon.type }}</li>
-                <li>Peso: {{ pokemon.weight }}</li>
-                <li>Altura: {{ pokemon.height }}</li>
+                <li>Nombre: {{ trainer.first_name }} {{ trainer.last_name }}</li>
+                <li>Nivel: {{ trainer.level }}</li>
+                <li>Fecha de Nacimiento: {{ trainer.date_of_birth }}</li>
             </ul>
         </div>
     </body>
