@@ -2,5 +2,6 @@
 {% block title %}Formulario de Pokemon{% endblock title %}
 
 {% block content %}
-
+  {% csrf_token %}
+  {{ form.as_p }}
 {% endblock content %}
