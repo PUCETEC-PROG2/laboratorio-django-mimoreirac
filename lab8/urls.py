@@ -20,9 +20,10 @@ from django.conf.urls.static import static
 from lab8 import settings
 
 urlpatterns = [
+    path('', include('pokedex.urls', namespace='pokedex')),
     path('admin/', admin.site.urls),
-    path('pokedex/', include('pokedex.urls')),
-    path('', include('pokedex.urls'))
+    # path('pokedex/', include('pokedex.urls', namespace='pokedex')),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -2,6 +2,11 @@
 {% block title %}Formulario de Pokemon{% endblock title %}
 
 {% block content %}
-  {% csrf_token %}
-  {{ form.as_p }}
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <br>
+    <button type="submit" class="btn btn-primary">Añadir</button>
+    <a href="{% url "pokedex:index" %}" class="btn btn-secondary">Regresar</a>
+  </form>
 {% endblock content %}

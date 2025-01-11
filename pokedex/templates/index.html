@@ -2,8 +2,9 @@
 {% block title %}Pokedex{% endblock title %}
 {% block content %}
   <p class="p-2">Bienvenido a la Pokedex</p>
-  <h3>Pokémon: </h3>
-  <a href="{% url 'pokedex:add_pokemon' %}">Añadir Pokemon</a>
+  {% if user.is_authenticated %}
+    <a href="{% url 'pokedex:add_pokemon' %}" class="btn btn-primary">Añadir Pokemon</a>
+  {% endif %}
   <div class="row">
       {% for pokemon in pokemons %}
       <div class="col-sm-4">
@@ -12,8 +13,12 @@
           <img class="card-img-top" src="{{ pokemon.picture.url }}">
           <div class="card-body">
             <h5 class="card-title">{{ pokemon | capfirst }}</h5>
-            <p class="card-text">Altura: {{ pokemon.height }}</p>
+            <p class="card-text">Tipo: {{ pokemon.type }}</p>
             <a href="pokemon/{{pokemon.pk}}" class="btn btn-primary"><i class="fa-solid fa-eye"></i></a>
+            {% if user.is_authenticated %}
+              <a href="edit_pokemon/{{pokemon.pk}}" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+              <a href="delete_pokemon/{{pokemon.pk}}" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+            {% endif %}
           </div>
         </div>
       </div>
