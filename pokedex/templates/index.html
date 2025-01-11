@@ -3,15 +3,25 @@
 {% block content %}
   <p class="p-2">Bienvenido a la Pokedex</p>
   <h3>Pokémon: </h3>
-  <ul class="list-group">
+  
+  <div class="row">
       {% for pokemon in pokemons %}
-      <li class="list-group-item">
-          <a href="pokemon/{{pokemon.pk}}">{{ pokemon | capfirst }}</a> 
-          <div>{{ pokemon.type }}</div>
-      </li>
+      <div class="col-sm-4">
+        <br>
+        <div class="card" style="width: 100%;">
+          <img class="card-img-top" src="{{ pokemon.picture.url }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ pokemon | capfirst }}</h5>
+            <p class="card-text">Altura: {{ pokemon.height }}</p>
+            <a href="pokemon/{{pokemon.pk}}" class="btn btn-primary"><i class="fa-solid fa-eye"></i></a>
+          </div>
+        </div>
+      </div>
       {% endfor %}
-  </ul>
+  </div>
+  <br>
   <h3>Entrenadores: </h3>
+  <br>
   <ul class="list-group">
       {% for trainer in trainers %}
       <li class="list-group-item">
@@ -20,4 +30,5 @@
       </li>
       {% endfor %}
   </ul>
+  <br>
 {% endblock content %}
