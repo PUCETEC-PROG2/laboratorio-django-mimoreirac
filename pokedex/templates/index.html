@@ -3,7 +3,7 @@
 {% block content %}
   <p class="p-2">Bienvenido a la Pokedex</p>
   <h3>Pokémon: </h3>
-  
+  <a href="{% url 'pokedex:add_pokemon' %}">Añadir Pokemon</a>
   <div class="row">
       {% for pokemon in pokemons %}
       <div class="col-sm-4">
