@@ -9,9 +9,13 @@ from pokedex.forms import PokemonForm
 
 def index(request):
     pokemons = Pokemon.objects.order_by('type')
-    trainers = Trainer.objects.order_by('last_name')
     template = loader.get_template('index.html')
-    return HttpResponse(template.render({'pokemons': pokemons, 'trainers': trainers}, request))
+    return HttpResponse(template.render({'pokemons': pokemons}, request))
+
+def trainers(request):
+    trainers = Trainer.objects.order_by('last_name')
+    template = loader.get_template('trainers.html')
+    return HttpResponse(template.render({'trainers': trainers}, request))
 
 def pokemon(request, pokemon_id):
     pokemon = Pokemon.objects.get(pk = pokemon_id)
