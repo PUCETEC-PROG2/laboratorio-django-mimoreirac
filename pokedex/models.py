@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import date
 
 # Create your models here.
 class Trainer(models.Model):
@@ -10,6 +11,12 @@ class Trainer(models.Model):
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
+
+    def get_age(self):
+        today = date.today()
+        return today.year - self.date_of_birth.year - (
+            (today.month, today.day) < (self.date_of_birth.month, self.date_of_birth.day)
+        )
 class Pokemon(models.Model):
     name = models.CharField(max_length=30, null=False)
     POKEMON_TYPES = {
